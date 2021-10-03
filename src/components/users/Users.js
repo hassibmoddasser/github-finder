@@ -1,18 +1,25 @@
-import React, { Component, Fragment } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types'
 import UserItem from './UserItem';
+import Spinner from '../layout/Spinner';
 
-class Users extends Component {
-  render() {
-    const { users } = this.props;
-    
+function Users({ users, loading }) {
+  if (!loading) {
     return (
-      <Fragment>
+      <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
         {users.map(user => {
           return <UserItem key={user.id} user={user} />
         })}
-      </Fragment>
-    )
+      </div>
+    );
+  } else {
+    return <Spinner />
   }
 }
+
+Users.prototype = {
+  users: PropTypes.array.isRequired,
+  loading: PropTypes.bool.isRequired
+};
 
 export default Users;

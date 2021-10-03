@@ -28,12 +28,10 @@ class App extends Component {
           
           <main>
             <div className="container mx-auto px-6 pb-12">
-              <div className="grid xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-8">
-                <Users 
-                  users={this.state.users} 
-                  loading={this.state.loading}
-                />
-              </div>
+              <Users 
+                users={this.state.users} 
+                loading={this.state.loading}
+              />
             </div>
           </main>
 
