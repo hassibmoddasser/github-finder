@@ -24,11 +24,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="flex flex-col h-screen justify-between">
+        <div className="flex flex-col justify-between h-screen">
           <Navbar />
           
           <main>
-            <div className="container mx-auto px-6 pb-12">
+            <div className="container px-3 pb-12 mx-auto">
               <Search />
               <Users 
                 users={this.state.users} 
