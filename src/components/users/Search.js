@@ -8,7 +8,9 @@ class Search extends Component {
   };
 
   static propTypes = {
-    searchUsers: PropTypes.func.isRequired
+    searchUsers: PropTypes.func.isRequired,
+    clearUsers: PropTypes.func.isRequired,
+    showClearButton: PropTypes.bool.isRequired
   };
 
   onChange = (e) => {
@@ -24,15 +26,26 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="w-3/6 mb-10">
-        <form onSubmit={this.onSubmit} autoComplete="off">
-          <div className="form-control">
-            <div className="relative">
-              <input type="text" placeholder="Search" name="text" className="w-full bg-gray-200 pr-36 input input-lg" value={this.state.text} onChange={this.onChange} /> 
-              <button type="submit" className="absolute top-0 right-0 w-32 rounded-l-none btn btn-lg">Go</button>
+      <div className="grid grid-cols-1 gap-8 mb-8 xl:grid-cols-2 lg:grid-cols-2 md:grid-cols-2">
+        <div>
+          <form onSubmit={this.onSubmit} autoComplete="off">
+            <div className="form-control">
+              <div className="relative">
+                <input type="text" placeholder="Search" name="text" className="w-full bg-gray-200 pr-36 input input-lg" value={this.state.text} onChange={this.onChange} /> 
+                <button type="submit" className="absolute top-0 right-0 w-32 rounded-l-none btn btn-lg">Go</button>
+              </div>
             </div>
+          </form>
+        </div>
+
+        {this.props.showClearButton && (
+          <div>
+            <button 
+              className="btn btn-ghost btn-lg" 
+              onClick={this.props.clearUsers}
+            >Clear</button>
           </div>
-        </form>
+        )}
       </div>
     );
   }
