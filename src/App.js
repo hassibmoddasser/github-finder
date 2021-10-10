@@ -5,12 +5,14 @@ import Navbar from './components/layout/Navbar';
 import Users from './components/users/Users';
 import Search from './components/users/Search';
 import Footer from './components/layout/Footer';
+import Alert from './components/layout/Alert';
 
 class App extends Component {
 
   state = {
     users: [],
-    loading: false
+    loading: false,
+    alert: null
   };
 
   searchUsers = async (text) => {
@@ -25,8 +27,19 @@ class App extends Component {
     this.setState({ users: [], loading: false });
   }
 
+  setAlert = (msg, type) => {
+    this.setState({
+      alert: { msg, type }
+    });
+
+    // Hide the alert
+    setTimeout(() => {
+      this.setState({ alert: null });
+    }, 3000);
+  }
+
   render() {
-    const { users, loading } = this.state;
+    const { users, loading, alert } = this.state;
     
     return (
       <div className="App">
@@ -35,10 +48,13 @@ class App extends Component {
           
           <main>
             <div className="container px-3 pb-12 mx-auto">
+              {alert && <Alert alert={alert} />}
+
               <Search 
                 searchUsers={this.searchUsers} 
                 clearUsers={this.clearUsers}
                 showClearButton={users.length > 0 ? true : false}
+                setAlert={this.setAlert}
               />
               <Users 
                 users={users} 
