@@ -1,22 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import { FaGithub } from 'react-icons/fa';
 
 function Navbar({ title }) {
   return (
-    <nav className="navbar mb-12 shadow-lg bg-neutral text-neutral-content">
+    <nav className="mb-12 shadow-lg navbar bg-neutral text-neutral-content">
       <div className="container mx-auto">
         <div className="flex-none px-2 mx-2">
-          <FaGithub className="inline text-3xl pr-2" />
-          <span className="text-lg font-bold align-middle">{title}</span>
+          <FaGithub className="inline pr-2 text-3xl" />
+          <Link className="text-lg font-bold align-middle" to='/'>{title}</Link>
         </div> 
         <div className="flex-1 px-2 mx-2">
           <div className="items-stretch hidden lg:flex">
-            <a className="btn btn-ghost btn-sm rounded-btn">Home</a> 
-            <a className="btn btn-ghost btn-sm rounded-btn">Portfolio</a> 
-            <a className="btn btn-ghost btn-sm rounded-btn">About</a> 
-            <a className="btn btn-ghost btn-sm rounded-btn">Contact</a>
+            <Link className="btn btn-ghost btn-sm rounded-btn" to='/'>Home</Link> 
+            <Link className="btn btn-ghost btn-sm rounded-btn" to='/about'>About</Link>
           </div>
         </div> 
         <div className="flex-none">
@@ -35,7 +34,7 @@ function Navbar({ title }) {
         </div>
         <div className="flex-none pl-2">
           <div className="avatar">
-            <div className="rounded-full w-10 h-10 m-1">
+            <div className="w-10 h-10 m-1 rounded-full">
               <img src="https://avatars.githubusercontent.com/u/29257731?v=4" alt="Logged in user" />
             </div>
           </div>
