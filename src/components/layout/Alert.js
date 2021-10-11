@@ -5,7 +5,7 @@ function Alert({ alert }) {
 
   return (
     alert !== null && (
-      <p className="flex items-start mt-8 mb-4 space-x-2">
+      <p className="flex items-start mb-4 space-x-2">
         {type === 'error' && (
           <svg className="w-6 h-6 flex-none mt-0.5" fill="none" viewBox="0 0 24 24">
             <circle cx="12" cy="12" r="12" fill="#FECDD3"></circle>
