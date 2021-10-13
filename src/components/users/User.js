@@ -101,31 +101,31 @@ class User extends Component {
             </div>
           </div>
 
-          <div className="w-full rounded-lg shadow-md bg-base-100 stats">
+          <div className="w-full py-5 rounded-lg shadow-md bg-base-100 stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaUsers className="text-3xl md:text-4xl" />
+                <FaUsers className="text-3xl md:text-5xl" />
               </div> 
               <div className="pr-5 stat-title">Followers</div> 
               <div className="pr-5 text-3xl stat-value md:text-4xl">{followers}</div>
             </div> 
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaUserFriends className="text-3xl md:text-4xl" />
+                <FaUserFriends className="text-3xl md:text-5xl" />
               </div> 
               <div className="pr-5 stat-title">Followings</div> 
               <div className="pr-5 text-3xl stat-value md:text-4xl">{following}</div>
             </div> 
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaCodepen className="text-3xl md:text-4xl" />
+                <FaCodepen className="text-3xl md:text-5xl" />
               </div> 
               <div className="pr-5 stat-title">Public Repos</div> 
               <div className="pr-5 text-3xl stat-value md:text-4xl">{public_repos}</div>
             </div>
             <div className="stat">
               <div className="stat-figure text-secondary">
-                <FaStore className="text-3xl md:text-4xl" />
+                <FaStore className="text-3xl md:text-5xl" />
               </div> 
               <div className="pr-5 stat-title">Public Gists</div> 
               <div className="pr-5 text-3xl stat-value md:text-4xl">{public_gists}</div>
