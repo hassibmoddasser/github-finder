@@ -2,9 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function UserItem({ user: { login, avatar_url, html_url } }) {
+function UserItem({ user: { login, avatar_url } }) {
   return (
-    <div className="shadow-lg card compact side bg-base-100">
+    <div className="shadow-md card compact side bg-base-100">
       <div className="flex-row items-center space-x-4 card-body">
         <div>
           <div className="avatar">
