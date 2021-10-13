@@ -4,20 +4,25 @@ import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 
+import Repos from '../repos/Repos';
+
 class User extends Component {
 
   componentDidMount() {
     this.props.getUser(this.props.match.params.login);
+    this.props.getUserRepos(this.props.match.params.login);
   }
 
   static propTypes = {
     loading: PropTypes.bool.isRequired,
     getUser: PropTypes.func.isRequired,
-    user: PropTypes.object.isRequired
+    user: PropTypes.object.isRequired,
+    repos: PropTypes.array.isRequired,
+    getUserRepos: PropTypes.func.isRequired
   };
 
   render() {
-    const { loading } = this.props;
+    const { loading, repos } = this.props;
 
     const {
       name,
@@ -61,12 +66,12 @@ class User extends Component {
             </div>
             <div className="col-span-2">
               <div className="mb-6">
-                <h2 className="text-3xl card-title">{name}
+                <h1 className="text-3xl card-title">{name}
                   <div className="ml-2 mr-1 badge badge-success">{type}</div>
                   {hireable && (
                     <div className="mx-1 badge badge-info">Hireable</div>
                   )}
-                </h2>
+                </h1>
                 <p>{bio}</p>
                 <div className="mt-4 card-actions">
                   <a className="btn btn-outline" href={html_url}>Visit GitHub Profile</a>
@@ -101,7 +106,7 @@ class User extends Component {
             </div>
           </div>
 
-          <div className="w-full py-5 rounded-lg shadow-md bg-base-100 stats">
+          <div className="w-full py-5 mb-6 rounded-lg shadow-md bg-base-100 stats">
             <div className="stat">
               <div className="stat-figure text-secondary">
                 <FaUsers className="text-3xl md:text-5xl" />
@@ -131,6 +136,8 @@ class User extends Component {
               <div className="pr-5 text-3xl stat-value md:text-4xl">{public_gists}</div>
             </div>
           </div>
+
+          <Repos repos={repos} />
         </div>
       </Fragment>
     )
