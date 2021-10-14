@@ -11,7 +11,7 @@ import {
   GET_REPOS
 } from '../types';
 
-function GitHubState (props) {
+function GitHubState(props) {
 
   const initialState = {
     users: [],
@@ -64,19 +64,22 @@ function GitHubState (props) {
   // Set Loading
   const setLoading = () => dispatch({ type: SET_LOADING });
 
-  return <GitHubContext.Provider
-    value={{
-      users: state.users,
-      user: state.user,
-      repos: state.repos,
-      loading: state.loading,
-      searchUsers,
-      getUser,
-      getUserRepos,
-      clearUsers
-    }}>
+  return (
+    <GitHubContext.Provider
+      value={{
+        users: state.users,
+        user: state.user,
+        repos: state.repos,
+        loading: state.loading,
+        searchUsers,
+        getUser,
+        getUserRepos,
+        clearUsers
+      }}
+    >
       {props.children}
     </GitHubContext.Provider>
+  );
 };
 
 export default GitHubState;
