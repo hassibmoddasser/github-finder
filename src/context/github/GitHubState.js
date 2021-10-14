@@ -12,12 +12,13 @@ import {
 } from '../types';
 
 function GitHubState (props) {
+
   const initialState = {
     users: [],
     user: {},
     repos: [],
     loading: false
-  }
+  };
 
   const [state, dispatch] = useReducer(GitHubReducer, initialState);
 
@@ -45,6 +46,18 @@ function GitHubState (props) {
     });
   }
 
+  // Get user repositories
+  const getUserRepos = async (username) => {
+    setLoading();
+
+    const res = await axios.get(`https://api.github.com/users/${username}/repos?per_page=5&client_id=${process.env.REACT_APP_GITHUB_CLIENT_ID}&client_secret=${process.env.REACT_APP_GITHUB_CLIENT_SECRET}`);
+
+    dispatch({
+      type: GET_REPOS,
+      payload: res.data
+    });
+  }
+
   // Reset User State
   const clearUsers = () => dispatch({ type: CLEAR_USERS });
 
@@ -59,6 +72,7 @@ function GitHubState (props) {
       loading: state.loading,
       searchUsers,
       getUser,
+      getUserRepos,
       clearUsers
     }}>
       {props.children}

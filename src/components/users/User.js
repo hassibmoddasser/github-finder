@@ -1,6 +1,5 @@
 import React, { useEffect, Fragment, useContext } from 'react';
 import Spinner from '../layout/Spinner';
-import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 
@@ -8,10 +7,10 @@ import GitHubContext from '../../context/github/GitHubContext';
 
 import Repos from '../repos/Repos';
 
-function User({ repos, getUserRepos, match }) {
+function User({ match }) {
   const gitHubContext = useContext(GitHubContext);
   
-  const { getUser, user, loading } = gitHubContext;
+  const { getUser, user, loading, repos, getUserRepos } = gitHubContext;
   
   useEffect(() => {
     getUser(match.params.login);
@@ -136,10 +135,5 @@ function User({ repos, getUserRepos, match }) {
     </Fragment>
   );
 }
-
-User.propTypes = {
-  repos: PropTypes.array.isRequired,
-  getUserRepos: PropTypes.func.isRequired
-};
 
 export default User;
