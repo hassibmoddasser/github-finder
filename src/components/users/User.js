@@ -1,12 +1,17 @@
-import React, { useEffect, Fragment } from 'react';
+import React, { useEffect, Fragment, useContext } from 'react';
 import Spinner from '../layout/Spinner';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FaCodepen, FaStore, FaUserFriends, FaUsers } from 'react-icons/fa';
 
+import GitHubContext from '../../context/github/GitHubContext';
+
 import Repos from '../repos/Repos';
 
-function User({ user, loading, repos, getUser, getUserRepos, match }) {
+function User({ repos, getUserRepos, match }) {
+  const gitHubContext = useContext(GitHubContext);
+  
+  const { getUser, user, loading } = gitHubContext;
   
   useEffect(() => {
     getUser(match.params.login);
@@ -133,9 +138,6 @@ function User({ user, loading, repos, getUser, getUserRepos, match }) {
 }
 
 User.propTypes = {
-  loading: PropTypes.bool.isRequired,
-  getUser: PropTypes.func.isRequired,
-  user: PropTypes.object.isRequired,
   repos: PropTypes.array.isRequired,
   getUserRepos: PropTypes.func.isRequired
 };
