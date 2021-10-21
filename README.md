@@ -1,6 +1,6 @@
 # GitHub Finder
 
-A React.js app to search GitHub profiles and see profile details. This app uses the Context API along with the useContext and useReducer hooks for state management and is part of the "React Front To Back" Udemy course from [Brad Traversy](https://traversymedia.com)'s.
+A React.js app to search GitHub profiles and see profile details. This app uses the Context API along with the useContext and useReducer hooks for state management and is part of the "React Front To Back" Udemy course from [Brad Traversy](https://traversymedia.com).
 
 I have used TailwindCSS & DaisyUI to make it look more user-friendly and modern.
 
